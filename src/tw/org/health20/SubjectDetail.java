@@ -36,7 +36,7 @@ public class SubjectDetail extends Activity {
 		//message_view.setAutoLinkMask(Linkify.ALL);
 		// message_wview=(WebView)findViewById(R.id.webview);
 		String url = "http://medhint.nhri.org.tw/hpforum/test4.jsp?seq_id="
-				+ seq_id;
+				+ seq_id+"&user_cname="+user_cname+"&user_seqid="+user_seqid;
 
 		GetMessage jsonmsg = new GetMessage();
 		String msg = jsonmsg.stringQuery(url);
