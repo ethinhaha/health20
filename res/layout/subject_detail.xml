@@ -15,14 +15,15 @@
         android:textColor="@drawable/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
+    <WebView
         android:id="@+id/detail_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="TextView" />
+        android:layout_below="@+id/textView2"
+        android:text="" />
 
     <TextView
         android:id="@+id/textView2"

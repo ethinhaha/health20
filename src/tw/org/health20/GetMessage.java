@@ -8,22 +8,21 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 public class GetMessage {
-	
-	public String stringQuery(String url){
-	try{
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost method = new HttpPost(url);
-		HttpResponse response = httpclient.execute(method);
-		HttpEntity entity = response.getEntity();
-		if(entity != null){
-        return EntityUtils.toString(entity);
-        }else{
-        return "No string.";
-        }
-	}catch(Exception e){
-		return ""+e;
-	}
+
+	public String stringQuery(String url) {
+		try {
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost method = new HttpPost(url);
+			HttpResponse response = httpclient.execute(method);
+			HttpEntity entity = response.getEntity();
+			if (entity != null) {
+				return EntityUtils.toString(entity);
+			} else {
+				return "No string.";
+			}
+		} catch (Exception e) {
+			return "" + e;
+		}
 
 	}
 }
-
