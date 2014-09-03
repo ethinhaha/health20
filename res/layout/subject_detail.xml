@@ -19,11 +19,9 @@
         android:id="@+id/detail_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/detail_author"
+        android:layout_above="@+id/textView1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/detail_title"
-        android:layout_marginTop="20dp"
         android:text="TextView" />
 
     <TextView
