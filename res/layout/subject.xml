@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/listsubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/back_ol"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/back_ol"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="31dp"
+        android:background="@drawable/shape"
+        android:text="返回"
+        android:textColor="@drawable/white" />
+
+    <Button
+        android:id="@+id/post_new"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/listsubject"
+        android:layout_marginRight="22dp"
+        android:background="@drawable/shape"
+        android:text="發表新文章"
+        android:textColor="@drawable/white" />
+
+</RelativeLayout>

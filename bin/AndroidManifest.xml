@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tw.org.health20"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="tw.org.health20.Login_app"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+      	<activity
+            android:name="tw.org.health20.LoginSuccess"></activity>
+      	<activity
+            android:name="tw.org.health20.Ongoing"></activity> 
+       	<activity
+            android:name="tw.org.health20.Previous"></activity>
+       	 <activity
+            android:name="tw.org.health20.Ongoing_subject"></activity>
+       	 <activity
+            android:name="tw.org.health20.Subjectlist"></activity>
+       	 <activity
+            android:name="tw.org.health20.SubjectDetail"></activity>
+       	 <activity
+            android:name="tw.org.health20.PreviousDetail"></activity>
+       	 <activity
+            android:name="tw.org.health20.editor"></activity>       	 
+       	 </application>
+
+</manifest>

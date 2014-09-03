@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">LoginApp</string>
+    <string name="hello_world">測試回傳</string>
+    <string name="action_settings">Settings</string>
+    <drawable name="red">#b30000</drawable>
+    <drawable name="white">#ffffff</drawable>
+      <drawable name="blue">#0000ff</drawable>
+</resources>
