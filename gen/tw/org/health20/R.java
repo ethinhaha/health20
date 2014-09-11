@@ -29,38 +29,47 @@ public final class R {
         public static final int white=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001f;
-        public static final int author=0x7f08000d;
-        public static final int back_o=0x7f080011;
-        public static final int back_ol=0x7f080019;
-        public static final int back_p=0x7f080017;
+        public static final int action_settings=0x7f080028;
+        public static final int author=0x7f08000e;
+        public static final int back_o=0x7f080013;
+        public static final int back_ol=0x7f08001c;
+        public static final int back_p=0x7f08001b;
+        public static final int back_pd=0x7f080019;
+        public static final int back_pn=0x7f080025;
         public static final int back_post=0x7f08000b;
-        public static final int date=0x7f08000e;
-        public static final int detail_author=0x7f08001d;
-        public static final int detail_date=0x7f08001e;
-        public static final int detail_msg=0x7f08001c;
-        public static final int detail_pre_date=0x7f080015;
-        public static final int detail_pre_msg=0x7f080016;
-        public static final int detail_pre_title=0x7f080013;
-        public static final int detail_title=0x7f08001b;
-        public static final int editmsg=0x7f080009;
+        public static final int back_sd=0x7f080022;
+        public static final int button1=0x7f080018;
+        public static final int date=0x7f08000f;
+        public static final int detail_author=0x7f080021;
+        public static final int detail_date=0x7f08001f;
+        public static final int detail_msg=0x7f080020;
+        public static final int detail_pre_date=0x7f080016;
+        public static final int detail_pre_msg=0x7f080017;
+        public static final int detail_pre_title=0x7f080014;
+        public static final int detail_title=0x7f08001e;
+        public static final int editmsg=0x7f08000a;
         public static final int edittitle=0x7f080007;
         public static final int email=0x7f080002;
-        public static final int listView2_pre=0x7f080018;
+        public static final int listView2_pre=0x7f08001a;
         public static final int listsubject=0x7f080012;
         public static final int login=0x7f080004;
-        public static final int ongoing=0x7f08000f;
-        public static final int post=0x7f08000a;
-        public static final int post_new=0x7f08001a;
-        public static final int previous=0x7f080010;
+        public static final int ongoing=0x7f080010;
+        public static final int post=0x7f08000c;
+        public static final int post_new=0x7f08001d;
+        public static final int previous=0x7f080011;
         public static final int pw=0x7f080003;
+        public static final int re_post=0x7f080023;
         public static final int rem_log=0x7f080005;
+        public static final int reset_post=0x7f080026;
         public static final int textView1=0x7f080006;
         public static final int textView2=0x7f080008;
-        public static final int textView3=0x7f080014;
-        public static final int title=0x7f08000c;
+        public static final int textView3=0x7f080015;
+        public static final int title=0x7f08000d;
+        public static final int upload=0x7f080009;
         public static final int user_cname=0x7f080000;
         public static final int user_seqid=0x7f080001;
+        public static final int web_post=0x7f080024;
+        public static final int wpost_new=0x7f080027;
     }
     public static final class layout {
         public static final int activity_login_app=0x7f030000;
@@ -72,6 +81,7 @@ public final class R {
         public static final int previous_list=0x7f030006;
         public static final int subject=0x7f030007;
         public static final int subject_detail=0x7f030008;
+        public static final int web_editor=0x7f030009;
     }
     public static final class menu {
         public static final int login_app=0x7f070000;

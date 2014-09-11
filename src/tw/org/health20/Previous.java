@@ -8,19 +8,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class Previous extends Activity {
 	private ListView pre_listview;
+	private Button back_p;
 	String[] seq_id;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.previous_list);
 		pre_listview = (ListView) this.findViewById(R.id.listView2_pre);
+		back_p=(Button)this.findViewById(R.id.back_p);
 		Bundle bundle = this.getIntent().getExtras();
 		String json = bundle.getString("msg");
 		String[] ongoingTitle = parseJSONData(getJSONData(json));
@@ -48,6 +51,12 @@ public class Previous extends Activity {
 			}
 
 		});
+		
+		back_p.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+				}
+			});
 	}
 
 	private JSONArray getJSONData(String json) {

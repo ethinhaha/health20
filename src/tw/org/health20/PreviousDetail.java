@@ -4,8 +4,9 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class PreviousDetail extends Activity {
@@ -13,6 +14,7 @@ public class PreviousDetail extends Activity {
 	private String title, date, message;
 	private TextView titleview, date_view;
 	private WebView message_view;
+	private Button back_pd;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,10 +26,12 @@ public class PreviousDetail extends Activity {
 		titleview = (TextView) findViewById(R.id.detail_pre_title);
 		date_view = (TextView) findViewById(R.id.detail_pre_date);
 		message_view = (WebView) findViewById(R.id.detail_pre_msg);
-		//message_view.setAutoLinkMask(Linkify.ALL);
+		back_pd=(Button)findViewById(R.id.back_pd);
+		// message_view.setAutoLinkMask(Linkify.ALL);
 
 		String url = "http://medhint.nhri.org.tw/hpforum/test4.jsp?seq_id="
-				+ seq_id+"&user_cname="+user_cname+"&user_seqid="+user_seqid;
+				+ seq_id + "&user_cname=" + user_cname + "&user_seqid="
+				+ user_seqid;
 
 		GetMessage jsonmsg = new GetMessage();
 		String msg = jsonmsg.stringQuery(url);
@@ -46,11 +50,18 @@ public class PreviousDetail extends Activity {
 		titleview.setText(title);
 		date_view.setText(date);
 		message_view.getSettings().setJavaScriptEnabled(true);
-		//message_view.setWebViewClient(new WebViewClient());  
+		// message_view.setWebViewClient(new WebViewClient());
 		message_view.loadUrl(message);
-		//message_view.setMovementMethod(ScrollingMovementMethod.getInstance());// ºu°Ê
-		//message_view.setText(Html.fromHtml(message));
+		// message_view.setMovementMethod(ScrollingMovementMethod.getInstance());//
+		// ºu°Ê
+		// message_view.setText(Html.fromHtml(message));
 		// Toast.makeText(this,"seq_id:"+seq_id+"title:"+title+"msg:"+message
 		// ,Toast.LENGTH_LONG).show();
+		
+		back_pd.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+				}
+			});
 	}
 }

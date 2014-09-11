@@ -22,7 +22,7 @@ import android.widget.SimpleAdapter;
 public class Ongoing_subject extends Activity {
 	private ListView subject_list;
 	private String user_cname, user_seqid, seq_id;
-	private Button back_o, post_new;
+	private Button back_ol, post_new;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,6 +39,7 @@ public class Ongoing_subject extends Activity {
 		String msg = message.stringQuery(url);
 
 		subject_list = (ListView) findViewById(R.id.listsubject);
+		back_ol=(Button)this.findViewById(R.id.back_ol);
 		post_new = (Button) this.findViewById(R.id.post_new);
 		Log.e("msg", msg);
 		// Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
@@ -90,6 +91,12 @@ public class Ongoing_subject extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		back_ol.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+				}
+			});
 	}
 
 	private JSONArray getJSONData(String json) {

@@ -38,7 +38,8 @@
        	 <activity
             android:name="tw.org.health20.PreviousDetail"></activity>
        	 <activity
+            android:name="tw.org.health20.EditorHtml"></activity>       	 
+       	  <activity
             android:name="tw.org.health20.editor"></activity>       	 
        	 </application>
-
 </manifest>

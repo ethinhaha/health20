@@ -1,34 +1,32 @@
 package tw.org.health20;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class Ongoing extends Activity {
 
 	private ListView ongoing_listview;
 	private String[] seq_id;
 	private String user_cname, user_seqid;
+	private Button back_o;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ongoing_list);
 
 		ongoing_listview = (ListView) this.findViewById(R.id.listsubject);
+		back_o=(Button)this.findViewById(R.id.back_o);
 		// listview_test=(ListView)findViewById(R.id.listsubject);
 		Bundle bundle = this.getIntent().getExtras();
 		String json = bundle.getString("msg");
@@ -37,7 +35,7 @@ public class Ongoing extends Activity {
 		String[] ongoingTitle = parseJSONData(getJSONData(json));
 		// Log.e("1",ongoingTitle[0]);
 		// Log.e("2",ongoingTitle[1]);
-
+		
 		ListAdapter listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, ongoingTitle);
 		ongoing_listview.setAdapter(listAdapter);
@@ -61,6 +59,13 @@ public class Ongoing extends Activity {
 			}
 
 		});
+		
+		back_o.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+				}
+			});
+		
 	}
 
 	private JSONArray getJSONData(String json) {

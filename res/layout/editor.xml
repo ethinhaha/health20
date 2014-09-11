@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
@@ -12,51 +12,77 @@
         android:text="標題:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/edittitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:ems="10" />
+    
+        <EditText
+            android:id="@+id/edittitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="請輸入標題" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/edittitle"
-        android:layout_marginTop="25dp"
-        android:text="內容:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            <requestFocus />
+        </EditText>
+
+ 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="內容:"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/upload"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="上傳" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/editmsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="32dp"
-        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="top|left"
+        android:layout_weight="5"
+        android:hint="在此輸入內容"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/post"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="26dp"
-        android:layout_marginRight="26dp"
-        android:text="發表內容" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center" >
 
-    <Button
-        android:id="@+id/back_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/post"
-        android:layout_alignBottom="@+id/post"
-        android:layout_toRightOf="@+id/textView2"
-        android:text="放棄編輯" />
+        <Button
+            android:id="@+id/back_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape"
+            android:text="放棄編輯"
+            android:textColor="@drawable/white" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape"
+            android:text="送出發表"
+            android:textColor="@drawable/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
