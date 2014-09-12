@@ -1,5 +1,6 @@
 package tw.org.health20;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -16,19 +17,34 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class editor extends Activity {
-	private EditText edittitle, editmsg;
+	private static final int PHOTO_SUCCESS = 1;  
+	private static final int CAMERA_SUCCESS = 2;   
+		
+	private EditText edittitle,editmsg;
 	private Button back_post, post,upload;
 	private String user_seqid, user_cname, parent_seqid, seq_id, hierarchy,
 			strResult,title;
+	//private MyEditText editmsg;
 	//private TextView texttitle;
 	//private WebView wv_edittor;
 		protected void onCreate(Bundle savedInstanceState) {
@@ -82,16 +98,16 @@ public class editor extends Activity {
 			}
 		});
 		upload.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
-				
+			       Intent getImage = new Intent(Intent.ACTION_GET_CONTENT);   
+			       getImage.addCategory(Intent.CATEGORY_OPENABLE);   
+			       getImage.setType("image/*");   
+			      startActivityForResult(getImage, PHOTO_SUCCESS);   
 			}
-		});
+		}); 
 			
 		post.setOnClickListener(new View.OnClickListener() {
-			
-			
 			public void onClick(View v) {
 				if(seq_id.equals("new")){
 				ppost();
@@ -112,10 +128,48 @@ public class editor extends Activity {
 		});
 
 	}
-	
-
-
-		public void repost() {
+		
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {  
+		    ContentResolver resolver = getContentResolver();   
+		    if (resultCode == RESULT_OK) {  
+		        switch (requestCode) {  
+		        case PHOTO_SUCCESS:  
+		            //获得图片的uri   
+		            Uri originalUri = intent.getData();   
+		            Bitmap bitmap = null;  
+		            try {  
+		                Bitmap originalBitmap = BitmapFactory.decodeStream(resolver.openInputStream(originalUri));  
+		                bitmap = resizeImage(originalBitmap, 200, 200);  
+		            } catch (FileNotFoundException e) {  
+		                e.printStackTrace();  
+		            }  
+		            if(bitmap != null){  
+		                //根据Bitmap对象创建ImageSpan对象  
+		                ImageSpan imageSpan = new ImageSpan(this, bitmap);  
+		                //创建一个SpannableString对象，以便插入用ImageSpan对象封装的图像  
+		                SpannableString spannableString = new SpannableString("[local]"+1+"[/local]");  
+		                //  用ImageSpan对象替换face  
+		                spannableString.setSpan(imageSpan, 0, "[local]1[local]".length()+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);  
+		                //将选择的图片追加到EditText中光标所在位置  
+		                int index = editmsg.getSelectionStart(); //获取光标所在位置  
+		                Editable edit_text = editmsg.getEditableText();  
+		                if(index <0 || index >= edit_text.length()){  
+		                    edit_text.append(spannableString);  
+		                }else{  
+		                    edit_text.insert(index, spannableString);  
+		                }  
+		            }else{  
+		                Toast.makeText(this, "获取图片失败", Toast.LENGTH_SHORT).show();  
+		            }  
+		            break;  
+		          default:  
+		            break;  
+		        }  
+		    }  
+		}  
+		
+		
+	public void repost() {
 			String uriAPI = "http://medhint.nhri.org.tw/hpforum/forum_subject_upd.jsp";
 			
 			HttpPost httpRequest = new HttpPost(uriAPI);
@@ -231,5 +285,25 @@ public class editor extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private Bitmap resizeImage(Bitmap originalBitmap, int newWidth, int newHeight){  
+	    int width = originalBitmap.getWidth();  
+	    int height = originalBitmap.getHeight();  
+	    //定义欲转换成的宽、高  
+//	      int newWidth = 200;  
+//	      int newHeight = 200;  
+	    //计算宽、高缩放率  
+	    float scanleWidth = (float)newWidth/width;  
+	    float scanleHeight = (float)newHeight/height;  
+	    //创建操作图片用的matrix对象 Matrix  
+	    Matrix matrix = new Matrix();  
+	    // 缩放图片动作  
+	    matrix.postScale(scanleWidth,scanleHeight);  
+	    //旋转图片 动作  
+	    //matrix.postRotate(45);  
+	    // 创建新的图片Bitmap  
+	    Bitmap resizedBitmap = Bitmap.createBitmap(originalBitmap,0,0,width,height,matrix,true);  
+	    return resizedBitmap;  
 	}
 }

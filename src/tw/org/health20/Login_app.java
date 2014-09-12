@@ -60,7 +60,7 @@ public class Login_app extends Activity {
 			bundle.putString("user_pw", user_pw);
 			intent.putExtras(bundle);
 			Login_app.this.startActivity(intent);
-			finish();
+			//finish();
 		}
 
 		login.setOnClickListener(new View.OnClickListener() {

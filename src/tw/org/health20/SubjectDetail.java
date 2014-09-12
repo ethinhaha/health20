@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -115,16 +116,21 @@ public class SubjectDetail extends Activity {
 		message_view.getSettings().setJavaScriptEnabled(true);
 		message_view.setWebViewClient(new WebViewClient());
 		message_view.loadUrl(message);
-		// message_view.setMovementMethod(ScrollingMovementMethod.getInstance());//
-		// 滾動
+		message_view.setDownloadListener(new DownloadListener(){
+            public void onDownloadStart(String url, String userAgent,
+                    String contentDisposition, String mimetype,
+                    long contentLength) {
+              Intent i = new Intent(Intent.ACTION_VIEW);
+              i.setData(Uri.parse(url));
+              startActivity(i);
+            }
+        });
+		//message_view.setMovementMethod(ScrollingMovementMethod.getInstance());//
 		// message_view.setText(Html.fromHtml(message));
 		// message_view.setText(Html.fromHtml(message, imgGetter, null));
 		// Toast.makeText(this,"seq_id:"+seq_id+"title:"+title+"msg:"+message
 		// ,Toast.LENGTH_LONG).show();
 		// message_wview.setWebViewClient(client)
 	}
-
-		
-
-
+	  
 }
