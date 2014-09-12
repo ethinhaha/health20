@@ -46,7 +46,7 @@
 
     </LinearLayout>
 
-    <tw.org.health20.tool.MyEditText
+    <EditText
         android:id="@+id/editmsg"
         android:layout_width="match_parent"
         android:layout_height="0dp"
