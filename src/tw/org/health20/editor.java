@@ -1,5 +1,6 @@
 package tw.org.health20;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -17,9 +18,7 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,6 +38,7 @@ import android.widget.Toast;
 public class editor extends Activity {
 	private static final int PHOTO_SUCCESS = 1;  
 	private static final int CAMERA_SUCCESS = 2;   
+	private static String requestURL = "http://medhint.nhri.org.tw/hpforum/testupload.jsp";
 	private String picPath = null;	
 	private EditText edittitle,editmsg;
 	private Button back_post, post,upload;
@@ -137,6 +137,9 @@ public class editor extends Activity {
 		            //获得图片的uri   
 		            Uri originalUri = intent.getData();   
 		            Bitmap bitmap = null;
+		            //File file =new File(picPath);
+		            //FileImageUpload FIU=new FileImageUpload();
+		            //FIU.uploadFile(file, requestURL, seq_id);
 		            //picPath=intent.getStringExtra(this.KEY_PHOTO_PATH);
 
 		            try {  
