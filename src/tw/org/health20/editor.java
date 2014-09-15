@@ -39,7 +39,7 @@ import android.widget.Toast;
 public class editor extends Activity {
 	private static final int PHOTO_SUCCESS = 1;  
 	private static final int CAMERA_SUCCESS = 2;   
-		
+	private String picPath = null;	
 	private EditText edittitle,editmsg;
 	private Button back_post, post,upload;
 	private String user_seqid, user_cname, parent_seqid, seq_id, hierarchy,
@@ -136,7 +136,9 @@ public class editor extends Activity {
 		        case PHOTO_SUCCESS:  
 		            //获得图片的uri   
 		            Uri originalUri = intent.getData();   
-		            Bitmap bitmap = null;  
+		            Bitmap bitmap = null;
+		            //picPath=intent.getStringExtra(this.KEY_PHOTO_PATH);
+
 		            try {  
 		                Bitmap originalBitmap = BitmapFactory.decodeStream(resolver.openInputStream(originalUri));  
 		                bitmap = resizeImage(originalBitmap, 200, 200);  
